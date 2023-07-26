@@ -1,0 +1,40 @@
+﻿<Window x:Class="SimpleDigitalClock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleDigitalClock"
+        mc:Ignorable="d"
+        Title="SimpleDigitalClock" Height="450" Width="800">
+    <Window.DataContext>
+        <local:AppViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="tbstyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="A Simple Digital Clock" Style="{DynamicResource tbstyle}"/>
+        
+        <!-- Clock-->
+        <TextBlock Grid.Row="1" Text="{Binding CurrentDateTime, StringFormat=T}" Style="{DynamicResource tbstyle}" FontSize="72" />
+        
+        <!-- Date -->
+        <TextBlock Grid.Row="2" Text="{Binding CurrentDateTime, StringFormat=D}" Style="{DynamicResource tbstyle}"/>
+
+    </Grid>
+</Window>
